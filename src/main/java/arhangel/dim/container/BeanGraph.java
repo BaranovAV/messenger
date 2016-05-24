@@ -42,16 +42,17 @@ public class BeanGraph {
      * Проверяем, связаны ли вершины
      */
     public boolean isConnected(BeanVertex parent, BeanVertex child) {
-        Map<String, Property> properties = parent.getBean().getProperties();
-        if (properties.size() > 0) {
-            for (String propertyName : properties.keySet()) {
-                Property property = properties.get(propertyName);
-                if (property.getType() == ValueType.REF && property.getValue().equals(child.getBean().getName())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return vertices.get(parent).contains(child);
+//        Map<String, Property> properties = parent.getBean().getProperties();
+//        if (properties.size() > 0) {
+//            for (String propertyName : properties.keySet()) {
+//                Property property = properties.get(propertyName);
+//                if (property.getType() == ValueType.REF && property.getValue().equals(child.getBean().getName())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
     }
 
     /**
